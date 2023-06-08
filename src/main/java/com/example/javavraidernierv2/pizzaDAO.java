@@ -21,7 +21,8 @@ public class pizzaDAO {
             ResultSet rs = st.executeQuery("SELECT * FROM Pizza");
 
             while (rs.next()) {
-                pizzas.add(new Pizza(rs.getString(2), rs.getDouble(3), rs.getInt(4)));
+                Pizza pizza = new Pizza(rs.getString(2), rs.getDouble(3), rs.getInt(4));
+                pizzas.add(pizza);
             }
 
             con.close();

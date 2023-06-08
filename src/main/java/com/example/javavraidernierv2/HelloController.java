@@ -39,6 +39,7 @@ public class HelloController implements Initializable {
          colIngredients.setCellValueFactory(new PropertyValueFactory<Pizza, Integer>("nb_ingredients"));
 
 
+
          List<Pizza> pizzas = pizzaDAO.getPizzas();
 
          for (int i = 0; i < pizzas.size(); i++){
@@ -54,10 +55,11 @@ public class HelloController implements Initializable {
     public void ajouterPizzaDansTab(String nom, double prix, int nb_ingredients){
         Pizza pizza = new Pizza(nom, prix, nb_ingredients);
 
-
         ObservableList<Pizza> pizzas = table.getItems();
         pizzas.add(pizza);
         table.setItems(pizzas);
+
+        new pizzaDAO().addPizza(pizza);
     }
 
     public void ajouterPizza(){
